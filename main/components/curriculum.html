@@ -1,0 +1,161 @@
+<script type="text/javascript" src="js/curriculum.js?v=<?= $this->cacheBust; ?>"></script>
+
+<br>
+    <div class="container-fluid">
+        <h3 ><span id="course_name">ACT</span>
+         <button id="btnAddSubject" data-toggle="modal" data-target="#addSubject" class="btn btn-success"
+            title='Add Subject' style="float:right;"> <span class="fa fa-plus"></span> Add Subject</button>
+          </h3>
+            
+        <hr/>
+        <div id="curriculum">
+
+
+        </div>
+        <!--<div class="row">
+            <div class="col-md-12 col-lg-12">
+                <div class="card">
+                    <div class="card-header" id="year_sem"><strong>First Year - Second Semester</strong></div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-sm">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Course Code</th>
+                                        <th scope="col">Course Description</th>
+                                        <th scope="col">Units</th>
+                                        <th scope="col">Pre-requisites</th>
+                                        <th scope="col">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="curriculumTable">
+                                
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+ 
+        </div>-->
+
+        
+
+    </div>
+    
+
+  <!-- Modal -->
+<div id="addSubject" class="modal fade" role="dialog" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog">
+  
+      <form method="post" id="formAdd">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalTitle">Add Subject</h5>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        
+        </div>
+        <div class="modal-body">
+          
+          <input type="hidden" id="hidden_id" />
+          <input type="hidden" id="hidden_menu" />
+              
+          <div class="row">
+            <div class="col-sm-12"><label>Year</label>
+              <select class="form-control" id="cboYear" placeholder="Select Year" required >
+                  <option value selected disabled>Select Year Level</option>
+                  <option value="1">First Year</option>
+                  <option value="2">Second Year</option>
+                  <option value="3">Third Year</option>
+                  <option value="4">Fourth Year</option>
+              </select>
+            </div> 
+      
+        </div>
+
+        <div class="row">
+          <div class="col-sm-12"><label>Semester</label>
+            <select class="form-control" id="cboSem" placeholder="Select Sem" required>
+              <option value selected disabled>Select Semester</option>
+              <option value="1">First Semester</option>
+              <option value="2">Second Semester</option>
+            </select>
+          </div> 
+    
+      </div>
+
+            <div class="row">
+                <div class="col-sm-12"><label>Subject</label>
+                  <select class="form-control" id="cboSubject" placeholder="Select Subject" required>
+
+                  </select>
+                </div> 
+          
+            </div>
+
+            <div class="row">
+              <div class="col-sm-12"><label>Pre-requisites: </label>
+                <select class="form-control" id="cboPrerequisit1" placeholder="Select Subject" >
+
+                </select>
+              </div> 
+          </div>
+          <div class="row">
+            <div class="col-sm-12"><label>Pre-requisites: </label>
+              <select class="form-control" id="cboPrerequisit2" placeholder="Select Subject" >
+
+              </select>
+            </div> 
+        </div>
+   
+         
+
+         
+         
+        <div class="modal-footer">
+          <span id="msg"></span>
+          <button type="submit" class="btn btn-success" id="btnModalSave" >Save</button>
+          <button type="submit" class="btn btn-primary" id="btnModalUpdate" >Update</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal" id="btnModalClose" >Close</button>
+        </div>
+  
+      </form>
+    </div>
+      </div>
+  
+    </div>
+  </div>
+  <!--End Add Modal-->
+
+  
+<script>
+  $(document).ready(function(){
+    switch (course_id) {
+      case 1:
+      $("#course_name").html("Associate in Computer Technology");
+        break;
+    
+      case 2:
+      $("#course_name").html("Bachelor of Science in Entreprenuership");
+        break;
+      case 3:
+        $("#course_name").html("Bachelor of Technical-Vocational Teacher Education");
+          break;
+    
+      default:
+        $("#course_name").html("Bachelor of Early Childhood Education");
+    }
+
+    
+    Processing_Modal("Loading!");
+
+   
+
+    load_curriculum(course_id);
+       
+    Processing_Close(500);
+
+ });
+</script>
+ 

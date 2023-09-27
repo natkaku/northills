@@ -1,0 +1,10 @@
+DROP FUNCTION IF EXISTS get_subj_code;
+DELIMITER //  
+CREATE FUNCTION get_subj_code(s_id INT(10)) RETURNS VARCHAR(45)
+ 
+BEGIN
+	DECLARE retrieve_data VARCHAR(45);
+	SELECT subj_code INTO retrieve_data FROM col_subjects WHERE id=s_id;
+	RETURN retrieve_data;
+END;
+// 
